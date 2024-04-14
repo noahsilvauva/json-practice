@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 
 import json
+import csv
 
-with open('data/schacon.repos.json', 'r') as file:
-    data = json.load(file)
+with open('data/schacon.repos.json', 'r') as file_json:
+    data = json.load(file_json)
 
-data[0]
+with open('lab8/chacon.csv', 'w', newline='') as file_csv:
+    writer = csv.writer(file_csv)
+    for d in range(5):
+        chacon_newline = [data[d]['name'],data[d]['html_url'],data[d]['updated_at'],data[d]['visibility']]
+        writer.writerow(chacon_newline)
 
-#for d in data_json[0]: 
-#    print(d["name"]) 
-
-#name
-#html_url
-#updated_at
-#visibility
+# https://www.geeksforgeeks.org/read-write-and-parse-json-using-python/
+# https://stackoverflow.com/questions/1938227/int-object-is-not-iterable-while-trying-to-sum-the-digits-of-a-number
+# https://stackoverflow.com/questions/58192471/csv-writer-inserting-comma-between-each-character
